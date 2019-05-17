@@ -8,13 +8,30 @@
 
 <body>
 
+  <div class="outline">
+    <h1>Outline</h1>
+    <ol>
+      <li>Take input from user</li>
+      <li>Generate random guesses from computer</li>
+      <li>Do logic to determine win</li>
+      <ul>
+        Win Conditions:
+        <li>Rock: wins against scissors, loses to paper, and ties against itself.</li>
+        <li>Paper: wins against rock, loses to scissors, and ties against itself.</li>
+        <li>Scissors: wins against paper, loses to rock, and ties against itself.</li>
+      </ul>
+      <li>Output win status</li>
+    </ol>
+  </div>
+
   <div id="game">
 
   </div>
 
+
   <script type="text/javascript">
     // Whenever a key is pressed, alert "pressed a button".
-    document.onkeyup = function() {
+    document.onkeyup = function () {
       alert("pressed a button");
     };
   </script>
