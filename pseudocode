@@ -1,0 +1,8 @@
+Take input from user
+Generate random guess from computer
+Do logic to determine win 
+    Win conditions: 
+        Rock: wins against scissors, loses to paper, and ties against itself.
+        Paper: wins against rock, loses to scissors, and ties against itself.
+        Scissors: wins against paper, loses to rock, and ties against itself.  
+Output win status
