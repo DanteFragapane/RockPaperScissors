@@ -10,29 +10,69 @@
 <body>
 
   <div id="game">
-
+    <h3 id="points">Your points: 0 Computer points: 0</h3>
+    <p id="guesses">Your guess: r  Computer guess: r</p>
+    <h1 id="winStatus"></h1>
   </div>
 
   <script type="text/javascript">
-
     // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
     var computerChoices = ["r", "p", "s"];
+    var win = 0;  // 0 = win, 1 = lose, 2 = tie
+    var userPoints = 0;
+    var computerPoints = 0;
 
     // This function is run whenever the user presses a key.
-    document.onkeyup = function(event) {
-
-      // Determines which key was pressed.
+    document.onkeyup = function (event) {
       var userGuess = event.key;
+      if (!computerChoices.includes(userGuess)) { // Key validation!
+        alert("Please choose a valid option: r, p, or s.")
+      } else {
+        var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+        document.getElementById("guesses").textContent = "Your guess: " + userGuess + "  Computer guess: " + computerGuess;
 
-      // Randomly chooses a choice from the options array. This is the Computer's guess.
-      var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+        // Win logic!
+        if(userGuess === "r") {
+          if(computerGuess === "r") {
+            win = 2;
+          } else if(computerGuess === "p") {
+            win = 1;
+          } else if(computerGuess === "s") {
+            win = 0;
+          }
+        } else if (userGuess === "p") {
+          if(computerGuess === "r") {
+            win = 0;
+          } else if(computerGuess === "p") {
+            win = 2;
+          } else if(computerGuess === "s") {
+            win = 1;
+          }
+        } else if (userGuess === "s") {
+          if(computerGuess === "r") {
+            win = 0;
+          } else if(computerGuess === "p") {
+            win = 1;
+          } else if(computerGuess === "s") {
+            win = 2;
+          }
+        } else {
+          console.error("Variable 'userGuess' = " + userGuess + " which is invalid!");
+        }
 
-      // Alerts the key the user pressed (userGuess).
-      alert("User guess: " + userGuess);
-
-      // Alerts the Computer's guess.
-      alert("Computer guess: " + computerGuess);
-
+        if (win == 0) {
+          userPoints += 1;
+          document.getElementById("winStatus").textContent = "You win!";
+        } else if (win == 1) {
+          computerPoints += 1;
+          document.getElementById("winStatus").textContent = "You lose.";
+        } else if (win == 2) {
+          document.getElementById("winStatus").textContent = "You tied.";
+        } else {
+          console.error("variable 'win' = " + win + " which is not valid!");
+        }
+        document.getElementById("points").textContent = "Your points: " + userPoints + "\nComputer points: " + computerPoints;
+      }
     };
   </script>
 
