@@ -25,7 +25,7 @@
   </div>
 
   <div id="game">
-
+    <h3 id="winStatus"></h3>
   </div>
 
 
@@ -34,6 +34,19 @@
     document.onkeyup = function () {
       alert("pressed a button");
     };
+
+    states = ["r", "p", "s"];
+    userPoints = 0;
+    computerPoints = 0;
+
+    // Generate random guess from computer.
+
+    // Do logic
+    if (lose) {
+      document.getElementById("winStatus").textContent = "You win!";
+    } else {
+      document.getElementById("winStatus").textContent = "You lose.";
+    }
   </script>
 
 </body>
